@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Web Programming Class</title>
 </head>
 
@@ -23,104 +22,15 @@
     <?php 
 
     // general description
-    $title = 'Session 2 - Arrays and Functions';
-    $date = 'date: 3/4/2023 - Saturday';
+    $title = 'Session 1 - Starting php and html';
+    $date = 'date: 2/25/2023 - Saturday';
     $owner = 'Pouria Ghafarbeigi';
 
-    // it's our data
-    $objects = [
-        [
-            'first_name' => 'Mosh',
-            'last_name' => 'Hamedoni',
-            'born' => 'London',
-            'job' => ['Programmer', 'Teacher']
-        ],
-        [
-            'first_name' => 'Mohammad',
-            'last_name' => 'Eslami',
-            'born' => 'Karaj',
-            'job' => ['Student', 'Coach']
-        ],
-        [
-            'first_name' => 'Nariman',
-            'last_name' => 'Eslami',
-            'born' => 'Tehran',
-            'job' => ['Coach', 'Caster', 'Psychologist']
-        ],
-        [
-            'first_name' => 'Pouria',
-            'last_name' => 'Ghafarbeigi',
-            'born' => 'Kerman',
-            'job' => ['Programmer', 'Student']
-        ],
-        [
-            'first_name' => 'Naser',
-            'last_name' => 'Akhondi',
-            'born' => 'Semnan',
-            'job' => ['Programmer', 'Teacher']
-        ]
-    ];
+    // php codes
+    $php_code = '&lt;?php ?&gt;';
+    $print_code = '&lt;?php echo("text"); or echo "text"; ?&gt;';
+    $print_expression = '&lt;?="text"?&gt;';
 
-    // it's a function to merge firstname and lastname
-    function formatName($name, $family) {
-        return $name . ' ' . $family;
-    }
-
-    // it is used for changing our data's format
-    function checkPersionName($person) {
-        $name = formatName($person['first_name'], $person['last_name']);
-
-        return [
-            'name' => $name,
-            'born' => $person['born'],
-            'job' => $person['job']
-        ];
-    }
-
-    // print a list of jobs
-    function printJobs($jobs) {
-
-        $filtered_jobs = '<ol>';
-        foreach($jobs as $job) {
-            $filtered_jobs = $filtered_jobs . '<li>' . $job . '</li>';
-        }
-
-        return $filtered_jobs . '</ol>';
-    }
-
-    // check keys to find jobs
-    function isTypeOfJob($key, $value) {
-        if($key == 'job') {
-            return printJobs($value);
-        }
-        else {
-            return $value;
-        }
-    }
-
-    // Simple Example Of Nested Function (seonf)
-    function seonf() {
-           $output = <<<'TEXT'
-            We can assign a funtion's result to the variable like the below example:
-            <br><br>
-            <code>
-                <strong>$variable_name</strong> = <strong>function</strong>() {<br>
-                
-                    // body<br>
-                    ...<br>
-                }
-                <br>
-
-                <strong>function</strong> function_name(<strong>$variable_name</strong>) {<br>
-
-                    // body<br>
-                    ...<br>
-                }
-            </code> 
-            TEXT;
-
-            return $output;
-    }
     ?>
 
     <!--header-->
@@ -132,59 +42,74 @@
     <div>
         <sub>
             <b>
-                <?php echo($owner)?>
+                <?php echo($owner); ?>
             </b>
         </sub>
     </div>
 
     <!--history-->
     <sub>
-        <?php echo $date?>
+        <?php echo $date; ?>
     </sub>
 
-    <br>
-    <br>
-
-    <!--second session points-->
+    <!--git discription-->
     <div>
-        <ul>
-            <li>We can use <code>var_dump()</code> function to print our arrays.</li>
-            <li>php has a function named <code>die()</code> to kill the program in specific situation.</li>
-        </ul>
-        <ul>
-            <li><?= seonf()?></li>
+        <p>
+            1. We learned about some git syntax:
+            <ul>
+                <li>
+                    <code>git add .</code>
+                </li>
+                <li>
+                    <code>git commit -m 'name or any type of description about this commit'</code>
+                </li>
+                <li>
+                    <code>git push</code>
+                </li>
+            </ul>
+        </p>
+
+        <!--php discription-->
+        <p>
+            2. We can use php in html files:
+            <ul>
+                <li>First, we should change the suffix of the file to the php</li>
+                <li>Second, use <code><?=$php_code?></code> syntax to write some php code</li>
+            </ul>
+
+            <b>
+                Actually, we can exchange 
+                <code>
+                    <?=$print_code?>
+                </code> 
+                with this code
+                <code>
+                    <?=$print_expression?>
+                </code>
+                <br>
+                to print with fewer code.
+            </b>
+        </p>
+    </div>
+
+    <!--some extra point-->
+    <div>
+        <p>
+            3. If we want to run the project in php we can use the code as below:
+
             <br>
-            <li>We were learned about <strong><a href="https://www.php.net/manual/en/ref.array.php">Array Functions</a></strong>. You can visit this site for more information.</li>
-        </ul>
-    </div>
+            <ul>
+                <li>
+                    <code>
+                        php -S ip-address:port
+                    </code>
+                </li>
+            </ul>
 
-    <!--print array of objects-->
-    <div>
-        <table class='table -table-bordered'>
-            <theader>
-                <th>Name</th>
-                <th>Born in</th>
-                <th>Job</th>
-            </theader>
-            <tbody>
-                <?php 
-                    foreach($objects as $person):
-                ?>
-                <tr>
-                    <?php      
-                        foreach(checkPersionName($person) as $key=>$value):
-                    ?>
-                        <td><?=isTypeOfJob($key, $value)?></td>
-                    <?php 
-                        endforeach;
-                    ?>
-                </tr>
-                <?php 
-                    endforeach;
-                ?>
-            </tbody>
-        </table>
-    </div>
+            4. If we want to create randomly some sentence or paragraph we can use <strong><a href="https://loremipsum.io/">Lorem ipsum</a><strong>
+        </p>
 
+    </div>
+    
 </body>
 </html>
